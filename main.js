@@ -15,8 +15,10 @@ io.on('connection', (socket) => {
 });
 
 app.post('/webhook', (req, res) => {
-    io.emit('notif', 'test');
+    // todo: get the referer somehow
+    io.emit('notif', JSON.stringify(req.get('Referrer')));
     console.log('Got a POST REQUEST', JSON.stringify(req.body));
+    console.log('Request referer', JSON.stringify(req.get('Referrer')));
     res.send('Got a POST request ')
 });
 
