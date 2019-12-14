@@ -13,7 +13,7 @@ io.on('connection', (socket) => {
 
 app.post('/webhook', (req, res) => {
     io.emit('notif', 'test');
-    console.log('Got a POST REQUEST');
+    console.log('Got a POST REQUEST', JSON.stringify(req.body));
     res.send('Got a POST request ')
 });
 
